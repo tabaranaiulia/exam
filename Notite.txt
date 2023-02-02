@@ -1,0 +1,551 @@
+Seminar 2
+- daca vrem sa declaram in javascript o sa folosim 
+	- var -> este valabila oriunde 
+	- let -> doar unde e generat, acolo functioneaza 
+	- const -> constanta; este aceeasi peste tot 
+- tipuri de date
+	- numeric 
+	- string 
+	- function 
+	- bool 
+	- undefind
+- ca sa vad tipul= typeof
+- ca sa declar un obiect o={id:0, name:"Ionut"}
+- o lista goala se declareaza cu let l =[]
+- o lista contine mai multe elemente si are proprietatea length dar un obiect contine doar un element cu mai multe proprietati'
+- daca declar un obiect si nu-i dau valoare el devine din start undefined
+- atunci cand declaram si nu-l initializam o sa crape 
+- atunci cand pun la o valoare null el devine object 
+
+! atunci cand este == compara doar valoarea nu si tipul
+  cand este === compara si valoarea dar si tipul -> asta se foloseste cel mai mult
+
+- push baga un element la finalul array
+- pop scoate un element de la final 
+- unshift -> adauga un element la incput
+- shift scoate un element de la inceput
+
+- pentru a adauga unde vreau eu folosesc vector.splice(de unde incep (pozitia 1, 2 etc), daca vreau sa sterg ceva, ce vreau sa adaug)
+
+- ca sa ajung la o functie dau f12
+- ca sa comentez sau ctrl +/ 
+
+Obiect
+- indexul la obiect sunt de fapt denumirile proprietatilor 
+- de asemenea merge doar for in 
+
+- ca sa pot sa-mi aiu fisierul dau src="numele_fisier si extensia(.js)"
+
+- watch pun variabilele ca sa le vad
+- call stack arata exact unde a crapat
+
+cautare intr-un array 
+- am array 
+- ii dau let element = array.filter(x=> x==="text")
+- flirteaza array chivalent cu clauza din sql adica este select all from array where x = text
+
+Map -> selecteaza elementele din array pe baza unui criteriu; echivalent cu select din sql 
+let select=persons.map(x=>x.name);
+console.log(select); 
+
+
+Seminar 3
+
+schelet html 
+<html>
+<head>
+
+</head>
+
+<body>
+
+</body>
+<script></script>
+</html>
+
+- deci noi lucram cu ref type la obiecte, daca schimbam undeva o sa se schimbe pete tot 
+- de asemenea, nu trebuie sa dam return 
+- string este ref type dar se ocupa ca un value type 
+- in functie trebuie dat return la string ca sa se poata schimba
+
+- folosesc math pentru functiile matematice
+	- de exemplu pentru a ridica la a 3-a se folosete pow
+
+- ca sa intru intr-o functie standard =F12
+
+Arrow function
+- model de arrow function 
+	const callMapCube=()=>mapCube(cube,[1,2,3]);
+- daca este mai mult de un parametru trebuie sa atasam []; 
+- daca este un singur parametru lasam asa
+- in exemplu de mai sus am pus () pentru ca nu avem parametru 
+- ca sa apelam un arrow function folosim console.log(nume_functie(parametrii))
+
+Nested fuction 
+- functii in functii 
+
+Closure
+- se aseamana cu obiectele 
+- este o functie care la randul ei are o gramada de functii
+
+functia some
+- intoarca un boolean
+- exemplu let some=array.some(item => item.id =1)
+- verifica daca cel putin un element din array indeplineste o conditie 
+
+functi every 
+- intoarce un boolean
+- este asemanatoare cu some 
+- verifica daca toata colectia indeplineste un element
+
+ca sa facem 
+- private #age
+- protected _age
+- public age
+
+- mostenirea este doar dintr-o casa in alta si este ca la java -> extends si super
+
+NU AVEM INTERFETE!
+
+Seminar 4
+functii asincrone 
+- server (api) -> in cazul nostru este partea de backend 
+- in general, tehnologiile web se bazeaza pe schema 
+	ui (user interface sau front end) -> server (backend) -> baza de date
+	ui (user interface sau front end) <- server (backend) <- baza de date
+
+- functii sincrone -> a intrat a si iesit; da un rezultat 
+- functii asincrone -> ofera acel timp de care are nevoie o functie 
+- sunt 3 tipuri de functii asincrone
+	1. callback 
+	-> este precum in viata reala 
+	2. promise
+	-> este o promisiunea; asta se poate respecta sau nu
+	-> intotdeauna are functia then 
+	3. async
+
+- cand pun () inseamna ca apelez functia 
+- cand nu pun paranteze doar trimit 
+
+PENTRU A PRELUA DIN BAZA DE DATE
+- se face un patch(adresa de url).then(res=>res.json[]).then(res=>console.log(result)
+- aste se traduce prin faptul ca imi incarca responsul cu datele din bd si dupa le afiseaza 
+
+
+Asincron
+- pentru ca o functie sa foloseasca async await trebuie sa-i punem in fata async
+- exemplu async function init() ..
+- status 200 spune diferite chestii despre proces
+
+EVENIMENTE 
+- onclick -> cand facem click
+- onkeypress -> cand apasam o tasta de la tastatura
+- onfocuse -> cand intru in el 
+- input este acel textbox de la paw
+
+Dom 
+- este pagina noastra de html 
+- este ca un fel de arbore 
+- este chestia aia cu id-ul cum am facut la html 
+- atunci cand folosim addEventListener avem 2 evenimente obligatorii
+	- preventDeafult() // opreste coportamentul default al unui element din DOM
+	- stopPropagation() // opreste evenimentele de pe alte butoane
+
+
+Seminar 5 -> CRUD DI DOM manipulation
+- Create = post
+- Reade = get
+- Update = put -> face update pe tot obiectul ( pe toate 4 proprietati ) ; patch face un update partial
+- Delete = delete
+
+- ca sa folosesc axios trebuie sa-l importez
+- intotdeauna functiile de crud le implementez cu async 
+
+- json= cheie valoare ; este o lista de ceva ; in cazul nostru este o lista de obiecte 
+- json este un string dar il primim ca o lista de obiecte 
+
+- patch nu este la fel de destept ca post sa ne faca transformarea automat asa ca trebuie sa stam noi sa o facem 
+	- pentru asta trebuie sa facem o variabila 
+		let x= JSON.stringify() // imi transforma un obiect sau o lista de obiecte in string
+	- pentru ca sa faca din string in obiect folosesc 
+		let x = JSON.parse
+
+- functia de update primeste un id si un obiect 
+
+- construim un tabel 
+
+- in css
+	pentru id cu #
+	pentru clasa cu .
+- de retinut
+	 atunci cand fac interfata lucrez in html si am label si input=casuta und introduc valori 
+- folosesc </br> -> ca sa-mi treaca pe linia urmatoare 
+
+Seminar 6
+- relativ este in la % -> asta este folosit atunci cand este chestia din aceea cu marire
+- pe cand absolut e in pixeli 
+- for in prelua indexul, for of prelua valoarea 
+- fac o colectie cu let collection = document.getElementByTagName("p") -> asta inseamna ca preia fiecare p din html
+- si manipulez colectia cum vreau 
+- getElementByClassName -> imi intoarce primul element cu nume
+- getElementByTagName -> imi intoarce dupa tag adica daca e p, ul li etc
+- ca sa-mi intoarca un element fara id folosesc un selector de css 
+	- document.querySelector(".mydiv (adica clasa) ul (unde sa-l caute) .li (clasa cealalta))
+- toggle este atunci cand imi scoate o clasa sau imi adauga o clasa
+- cei 3 selectori de baza
+	- clasa, id si tag
+	- id mai specific 
+	- stilurile se aplica in cascasa 
+- stilurile in line este atunci cand se pun fix in paragraf si mereu este mai puternic 
+
+Seminar 7 
+- api -> construim in js 
+- acum facem crud pe backend 
+- ca sa fac un api avem nevoie de express care este un frame work care ma ajuta sa creez url
+- pentru asta avem nevoie de express, body-perser si corse
+- json sunt acele fisiere de configurare 
+- atunci cand vreau sa priesc un parametru din link ii dau params.id
+- post vs get 
+	- get-ul nu are body 
+
+OBS
+- intotdeauna functia de update primeste un id si un obiect 
+- functia de delete primeste doar id 
+
+- middleware este intre client si server -> se afla la jumatate
+- de fiecare data cand apelez un middleware o sa-mi intre pe acea ruta 
+- este pentru audentificare si redirectionare 
+
+Seminar 8
+- orice url trebui sa puna o migratie 
+- baza de data relationara= trebuie sa existe legaturi intre baza de date
+- lucram cu sql server pentru ca avem de implementat o baza de data relationara 
+- deci intru in sql si ca sa ruleze ii dau f5
+- fara n va fi tratat varchar 
+- char varchar nvarchar 
+- identity -> se folosete la primary key
+	   -> prima valoare pleaca cu id-ul 1 si se va incrementa un elemenet +1+1+1
+- in sql server, dupa orice comanda se pune go deoarece asa se desparta comenzile 
+- ca sa intru intr-o tabela trebuie sa dau dublu click si dupa intru cu alt+f1 o sa se deschida un meniu
+- ../numefisier -> asta se traduce ca ia dintr-un alt fisier
+
+Seminar 10
+- pentru ca sa cream o componenta de react trebuie sa-i dam in consola 
+	-> npm init react-app component
+- react component si react hooks 
+	- react component este pe clasa
+	- react hooks este pe functie 
+- ca sa intram in component apelam cd component
+	- o sa avem public -> aici se gaseste index html -> aplicatia principala
+	- si src -> aici avem app.js 
+- orice clasa declarata in react trebuie sa extinda component
+	- trebuie sa defineasca functia render()
+- o componenta reprezinta parametrizarea unui cod html si js
+- orice clasa are state si props
+	- facem un constructor care apeleaza props
+	- si in state se afla obiectul nostru 
+- props= parametrii nostrii =obiect; vine din exterior 
+- state = contine variabile care se declara in componenta noastra; vine din interior
+- in react nu se mai pune class ci className
+- ori de cate ori iau o valoare trebuie sa punem <>
+- constructorul initializeaza state si props 
+- metode statica= se apeleaza prin numele clasei; daca tine cont doar de parametrul pe care il dau si este independenta de ceilalti parametrii => statica
+-lifecycling
+	- mounting (ca un fel de create)
+		-> aici se apeleaza constructorul 
+		-> getDerivateStateFromProps -> metoda statica 
+		-> la sfarsit este componentDidMount -> se apeleaza dupa ce s-a randat obiectul; adica apare la sfarsit, cand aplicatia se incarca d
+	- updating (update)
+		-> set state
+		-> new props -> cand se clanjeaza noi chestii
+		-> avem getDerivate..
+		-> shouldComponentUpdata ->returneaza un boolean (care este true); daca ar fi fost false nu s-ar mai face update 
+		-> getSnpshotBeforeUpdate -> ne ajuta la componenta de mai jos 
+		-> ultima este componentDidUpdate
+			-> are 3 parametrii 
+				previos prop, previos state si un snapshot= un obiect, string , proprietate care a fost inainte 
+	- unmounting (delete)
+		- este o singura componenta -> componentWillUnmount
+ESTE OBLIGATORIU SA AVEM RENDER
+
+SEMINAR 11
+- ca sa lucram cu rute in react trebuie sa instalam in linia de comanda
+	npm install react-router-dom
+
+JS
+- spune ca trebuie sa fie de tipul string deci folosim typeof
+- ${} -> template literal -> se foloseste deoarce expresiile sunt transmise in functii
+
+REST
+- am pus baza noastra de date, eu am lucrat cu server sql
+- isNanN= este atunci cand nu este numar
+- Pentru procesare paralela. Expresia de așteptare face ca executarea funcției asincronizate să se întrerupă până la stabilirea unei promisiuni (adică îndeplinită sau respinsă) și să reia executarea funcției asincronizate după îndeplinire. Când este reluată, valoarea expresiei așteptate este cea a Promisiunii împlinite.
+Dacă Promisiunea este respinsă, expresia așteptată aruncă valoarea respinsă.
+Dacă valoarea expresiei care urmează operatorului de așteptare nu este o promisiune, aceasta este convertită într-o promisiune rezolvată.
+- Create = post
+- Reade = get
+- Update = put -> face update pe tot obiectul ( pe toate 4 proprietati ) ; patch face un update partial
+- Delete = delete
+- req este un obiect care contine informatii despre despre solicitarea HTTP care a generat evenimentul
+- res pentru a trimite înapoi răspunsul HTTP dorit.
+- this.state -> se acceseaza 
+- este in interiorul componentei 
+- API-ul fetch este împletit cu API-ul Promise. Funcția de fetch în sine returnează o Promisiune. Funcția de success pentru acea promisiune va avea un argument care este un obiect Response.
+Obiectul Response implementează Body care are mai multe proprietăți și mai multe metode care vă ajută să accesați conținutul lui Body al răspunsului.
+Body.json () este o funcție care citeștefluxul de răspunspână la finalizareșitrimiterăspunsul ca json. Aceastăoperațiunepoate dura ceva, așacăîn loc de a returna json, returnează o altăpromisiune. Funcția de succesaacesteipromisiunivaavea ca argument JSON-ulrezultat.
+Desigur, dacăreturnați o promisiunedintr-o funcție de succes, atunciaceapromisiuneva fi rezolvatăînurmătoareafuncțieînlănțuită.
+
+- The app object is instantiated on creation of the Express server. It has a middleware stack that can pe customized in app.configure().
+
+
+Async await
+O funcție asincronizată este o funcție declarată cu cuvântul cheie async, iar cuvântul cheie await este permis în interiorul acestora. Cuvintele cheie async și await permit ca comportamentul asincron, bazat pe promisiuni, să fie scris într-un stil mai curat, evitând necesitatea configurării în mod explicit a lanțurilor de promisiuni.
+
+` `    ${value}
+Template literal sunt încadrate de caracterul backtick (` ` ) (accent grav) în loc de ghilimele duble sau simple.
+Template literal spot conține substituenți (placeholder). Acestia (placeholder) sunt indicati de semnul dolar și de acolade ${expression}. Expresiile din substituenți și textul dintre backticks (` `) sunt transmise unei funcții.
+Funcția implicit tocmai concatenează părțile într-un singur șir. Dacă există o expresie care precedă literalul șablonului (tag), aceasta se numește șablon etichetat. În acest caz, expresia etichetei (de obicei o funcție) este apelată cu șablonul literal, pe care îl puteți manipula apoi înainte de a le trimite.
+Pentru a scăpa de un backtick într-un Template literal, puneți o bară inversă (\) backslash ,înainte de backtick.
+
+let vs var
+let vă permite să declarați variabile care sunt limitate la sfera unei instrucțiuni de bloc sau expresie pe care este utilizată, spre deosebire de cuvântul cheie var, care declară o variabilă la nivel global sau local la o întreagă funcție, indiferent de sfera de bloc. Cealaltă diferență dintre var și let este că aceasta din urmă este inițializată la o valoare numai atunci când un parser o evaluează (vezimaijos).
+
+La fel ca const, let nu creează proprietăți ale obiectului de fereastră atunci când este declarat global (în domeniul de aplicare cel mai de sus).
+
+addEventListener()
+ex: document.getElementById("myBtn").addEventListener("click", function() {
+  document.getElementById("demo").innerHTML = "Hello World";});
+
+Sequelize
+ORM- object relational mapping. Transforma un obiect din cod in inregistrarea din BD.
+
+Ce se intampla intr-un for daca folosesti var I in loc de let i?
+Diferenta e scope-ul, i-ul nu va mai putea fi vizibil in afara for-uluidaca e let.
+Ce se intampla fara state la react?
+Nu pot redesena ecranul cand vreau sa schimb ceva. Asa ramane, pentru ca desenarea era facuta de set State.
+Object.keys -> returneaza un array format cu toate proprietatile numarabile
+
+Functii de adaugare si stergere pentru stiva, coada si vector
+Stiva-push() si pop()
+Coada- push() si shift()
+Vector- splice() ->stergeelementul de pe pozitiaspecificatasi reface vectorul
+Props - >proprietate, se trimitprinconstructori
+-sunt argumenteledintr-o functie
+-in afaracomponentei
+-lucruri care nu se schimba in aplicatie
+-vine din parinte
+State -> se acceseaza cu this	
+-in interioruluneicomponente
+-update/rerender aplicatie dupa ce a introdus utilizatorul ceva
+-this.state:doar acces set.state: modific
+.handleChange()
+Anunta ca s-a schimbat ceva in state si atunci se re-rendeaza copmponenta respectiva. 
+Props vs state
+Props – se foloseste ca saparseze date intrecomponente
+State - obiectul care tine permanent atributele componentelor.
+
+Care e diferența dintre this.state.ceva și this.ceva?
+State e starea interna a componentei
+Cu this.state se acceseaza o proprietate din state a componentei 
+this.ceva – accesez o proprietate definita in constructor?
+
+React components has a built-in state object.
+The state object is where you store property values that belongs to the component.
+When the state object changes, the component re-renders.
+this keyword refers to an object, that object which is executing the current bit of javascript code.
+
+Obiectul de stare este locul în care stocați valorile proprietății care aparțin componentei.
+Când obiectul de stare se schimbă, componenta se redă din nou.
+acest cuvânt cheie se referă la un obiect, acel obiect care execută bitul curent al codului javascript.
+
+Ce e middleware și cum funcționează?
+Middleware is computer software that provides services to software applications beyond those available from the oprating system. Middleware makes it easier for software developers to implement communication and input/output, so they can focus on the specific purpose of the application.
+Express is a routing and middleware web framework that has minimal functionality of its own: An Express application is essentially a series of middleware function calls.
+Ce e app.use?
+The app object is instantiated on creation of the Express server. It has a middleware stack that can pe customized in app.configure().
+To set up your middleware, you can invoke app.use() for every middleware layer that you want to add, and it will add onto your Express middleware stack. 
+Each layer is essentially adding a function that specifically handles something to your flow through the middleware.
+
+Obiectul aplicației este instanțiat la crearea serverului Express. Are o stivă de middleware care poate fi personalizată în app.configure ().
+Pentru a configura middleware-ul, puteți invoca app.use () pentru fiecare strat de middleware pe care doriți să îl adăugați și acesta se va adăuga în stiva dvs. de middleware Express.
+Fiecare strat adaugă în esență o funcție care gestionează în mod s
+Ce metodă transformă un array în string?
+The join method creates and returns a new string by concatenating all of the elements in an array, separated by commas or a specified separator string. (MDN)
+EXEMPLU MDN:
+const elements = ['Fire', 'Air', 'Water'];
+console.log(elements.join());
+// expected output: "Fire,Air,Water"
+toString() - same thing, bu i don't think you can change the separator.
+Când se apelează componentDidMount()?
+	Se apeleaza dupa render(), dupa ce componenta a fost desenata si adaugata in DOM 
+In documentatia REACT : componentDidMount() is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+https://reactjs.org/docs/react-component.html#componentdidmount
+Care e diferența dintre string și String?
+	string e primitiva, String e obiect(se creeaza cu new)
+Vezi MDN pt mai multe detalii : 
+String literals (denoted by double or single quotes) and strings returned from String calls in a non-constructor context (that is, called without using the new keyword) are primitive strings.
+Rasp lor:
+string – primitive are used extensively. only hold the value
+are immutable thus are thread safe
+has no methods
+cannot create tow different literals with the same value.
+passed by value that is copy of primitive itself
+String – object are scarcely used have the ability to hold the property is mutable has methods
+you can create new objects with the keyword new wraps primitive data to create an object
+passed by reference
+Funcția split?
+The split method divides a String into an ordered list of substrings, puts there substrings into an array, and returns the array. The division is done by searching for a pattern, where the pattern is provided as the first parameter in the method's call.
+Metoda de împărțire împarte un șir într-o listă ordonată de șiruri de caractere, pune acolo șiruri de caractere într-o matrice și returnează matricea. Împărțirea se face prin căutarea unui model, unde modelul este furnizat ca prim parametru în apelul metodei.
+EXEMPLU DE PE MDN:
+const str = 'The quick brown fox jumps over the lazy dog.';
+const words = str.split(' ');
+console.log(words[3]);
+// expected output: "fox"
+Ce înseamnă innerText?
+The innerText property sets or returns the text content of the specified node, and all its descendants.
+If you set the innerText property, any child nodes are removed are replaced by a single text node containing the specified string.
+Proprietatea innerText setează sau returnează conținutul textului nodului specificat și al tuturor descendenților acestuia.
+Dacă setați proprietatea innerText, toate nodurile copil sunt eliminate sunt înlocuite cu un singur nod text care conține șirul specificat.
+What is difference between innerHTML and innerText?
+innerText returns all text contained by an element and all its child elements. innerHtml returns all text, including html tags, that is contained by an element.
+The Element property innerHTML gets or sets the HTML or XML markup contained within the element.
+textContent gets the content of all elements, including <script> and <style> elements. In contrast, innerText only shows “human-readable” elements. textContent returns every element in the node. In contrast, innerText is aware of styling and won't return the text of “hidden” elements
+
+543 / 5000
+Rezultatele traducerii
+innerText returnează tot textul conținut de un element și toate elementele sale copil. innerHtml returnează tot textul, inclusiv etichetele html, care este conținut de un element. Proprietatea Element innerHTML obține sau setează marcajul HTML sau XML conținut în element. textContent obține conținutul tuturor elementelor, inclusiv elementelor <script> și <style>. În schimb, textul interior arată doar elemente „lizibile de om”. textContent returnează fiecare element din nod. În schimb, innerText este conștient de stil și nu va returna textul elementelor „ascunse” 
+
+Vezi aici explicatii full:
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText
+https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
+Când se apelează render() ?
+Render se apeleaza dupa constructorul componentei pentru a o desena in DOM
+React has four built-in methods that gets called, in this order, when mounting a component:
+- constructor() - The constructor method is called before anything else, when the component is initiated, and it is the natural place to set up the initial state and other initial values. The constructor method id called with the props, as arguments, and you should always start by calling the super(props) before anything else, this will initiate the parent's constructor method and allows the component to inherit methods from its parent.
+- render() - The render method is required, and is the method that actually outputs the HTML to the DOM.
+The render() method is required and will always be called, the others are optional and will be called if you define them.
+componentDidUpdate - is called after the component is updated in the DOM.
+
+Ce pot folosi în loc de where la delete?
+destroy?
+
+Care e logica din spatele unui algoritm de JS?
+An algorithm is a function that takes in some data structure as input and manipulates it into some kind of ouput. The type of output that we get is based on the logic of the algorithm. 
+
+De ce merge string.toUpperCase() dacă string e primitive?
+Pentru ca javascript converteste automat primitivele string in obiecte ca sa permita apelarea metodelor. (Vezi MDN: “ JavaScript automatically converts primitives to String objects, so that it's possible to use String object methods for primitive strings. “ )
+Rasp lor:
+JavaScript allows us to work with primitives (strings, numbers, etc.) as if they were objects. They also provide methods to call as such. 
+The solution looks a little bit awkward, but here it is:
+1. Primitives are still primitive. A single value, as desired.
+2. The language allows access to methods and properties of strings, numbers, booleans and symbols.
+3. In order for that to work, a special “object wrapper” that provides the extra functionality is created, and then is destroyed.
+Here’s what actually happens in str.toUpperCase():
+1. The string str is a primitive. So in the moment of accessing its property, a special object is created that knows the value of the string, and has useful methods, like toUpperCase().
+2. That method runs and returns a new string (shown by alert).
+3. The special object is destroyed, leaving the primitive str alone. So primitives can provide methods, but they still remain lightweight.
+
+
+
+
+Alte inrebari:
+Diferenta intre params, query:
+path params are used to identify a specific resource or resources, while query parameters are used to sort/filter those resources.
+parametrii de cale sunt utilizați pentru a identifica o resursă sau resurse specifice, în timp ce parametrii de interogare sunt utilizați pentru a sorta / filtra resursele respective.
+Echivalentul lui insert si update:
+Post, put
+Await si async(folosite impreuna)
+Pentru procesare paralela. The await expression causes async function execution to pause until a Promise is settled (that is, fulfilled or rejected), and to resume execution of the async function after fulfillment. When resumed, the value of the await expression is that of the fulfilled Promise.
+If the Promise is rejected, the await expression throws the rejected value.
+If the value of the expression following the await operator is not a Promise, it's converted to a resolved Promise.
+.handleChange()
+Anunta ca s-a schimbat ceva in state si atunci se re-rendeaza copmponenta respectiva. 
+Props vs state
+Props – se foloseste ca sa parseze date intre componente
+State - obiectul care tine permanent atributele componentelor.
+Res si req
+req is an object containing information about the HTTP request that raised the event. In response to req, you use res to send back the desired HTTP response.
+
+Functii de adaugare si stergere pentru stiva, coada si vector
+Stiva- push() si pop()
+Coada- push() si shift()
+Vector- splice() ->sterge elementul de pe pozitia specificata si reface vectorul
+Props - > proprietate, se trimit prin constructori
+-sunt argumentele dintr-o functie
+-in afara componentei
+-lucruri care nu se schimba in aplicatie
+-vine din parinte
+State -> se acceseaza cu this
+-in interiorul unei componente
+-update/rerender aplicatie dupa ce a introdus utilizatorul ceva
+-this.state:doar acces      set.state: modific
+Object -> clasa generala cu mai multe functii
+String=primitiva, tip de data
+String = obiect
+Object.keys -> returneaza un array format cu toate proprietatile numarabile
+Sequelize
+ORM- object relational mapping. Transforma un obiect din cod in inregistrarea din BD.
+Ce se intampla intr-un for daca foloisesti var I in loc de let i?
+Diferenta e scope-ul, i-ul nu va mai putea fi vizibil in afara for-ului daca e let.
+Ce se intampla fara state la react?
+Nu pot redesena ecranul cand vreau sa schimb ceva. Asa ramane, pentru ca desenarea era facuta de setState.
+This.ceva vs this.state.ceva
+This.state.ceva -> accesez val proprietatii respective din state
+This.ceva -> accesez variabila definita din constructor
+String si string exemple:
+Let pisica =”boris”    typeof(pisica)->’string’
+Let pisica= new String(“boris”)    typeof(pisica)->object
+ 
+ 
+ 
+
+si sunt intrebari de genu ce ti returneaza fetch ce ti returneaza Object.keys
+dc pui await
+ce fac componentDidMount
+render
+ ce se apeleaza cand faci update pe state
+
+Intrebari:
+
+	1. Dif dintre string si String
+	- string = primitiva, tip de data
+	- String = obiect
+	
+	2. Render() = returneaza instructiuni despre cum sa deseneze paginaNaN = not a number
+	- Apelata cand se updateaza state ul si props ul
+	
+	3. didMount = dupa ce componenta primeste instructiunile despre cum sa fie desenata in pagina(render()), didMount deseneaza pagina 
+	
+	4. Props si state sunt inputurule pt render() pt o componenta
+	Props = proprietatile/configurarea componentei
+	State = statusul componentei. Se schimba cand userul genereaza evenimente. Componenta are un state initial cand se monteaza Componenta
+	
+	5. Dif let si var
+	- Var e variabila globala si poate fi redeclarata
+	- Let nu e vb locala(intr un block) si daca o redeclaram, genereaza eroare
+	
+	6. Async
+	7. Cum mai poti sa scrii fetch ul?
+	Fetch('/data.json').then(response=>response.json()).then(data=>{…})
+	
+	8. Map : metoda care creaza un nou vector cu valorile rezultate din functia utilizata in map
+	
+	9. findAll - returneaza un promise
+	
+	10. Daca in innerHTML pun un tag ce se intampla : innerHTML=<p>blablabla </p> => iti 
+	
+	11. M-a intrebat daca stiu alte functii din alea exceptand render si component : didMount, didUpdate
+	
+	12. Replace inlocuieste ce e in primul parametru cu ce e in al doilea
+	
+	13. Ciclul de viata al unei componente : mounting, apdating, unmounting
+	Se apeleaza:
+	- Contructorul
+	- render
+	- Component didMount
+	- Component didUpdate
+	
+	14. Ce contine un post?
+	- Header
+	- Content type
+
