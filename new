@@ -1,0 +1,240 @@
+try{
+        const person = await Homework.findByPk(req.params.id)
+        if (person) {
+            //verificam ce acceptam
+            //daca acceptam doar text, trimitem doar continutul
+            if(req.headers['accept'] && req.headers['accept']==='text/plain'){
+                res.status(200).send(person.content) 
+            }
+            //altfel trimitem toata persoana
+            else{
+                res.status(200).json(person)
+            }
+        } 
+        //testul 5 daca nu exista persoana, returnam null
+        else {
+            res.status(404).json({ message: 'not found' })
+        }
+        
+    }
+    catch(err){
+        console.warn(err.stack)
+        res.status(500).json({message : 'server error'})        
+    }
+    
+    
+    ---------------------
+      if(JSON.stringify(req.body)=='{}')
+    {
+        res.status(500).json({message:"Body is missing"});
+    }
+    else{
+        if(req.body.name && req.body.category && req.body.price)
+        { if(req.body.price >0)
+        { var ok=true;
+            app.locals.products.forEach((e)=>
+            {
+                if(e.name== req.body.name)
+                { ok=false;
+                res.status(500).json({message: "Product already exists"});
+                }
+              
+            });
+           if(ok==true) app.locals.products.push({name: req.body.name, category: req.body.category, price: req.body.price});
+            res.status(201).json({message: "Created"});
+        }
+        else
+        { 
+            res.status(500).json({message: "Price should be a positive number"});
+        }
+            
+        }
+        else
+        {
+            res.status(500).json({message: "Invalid body format"});
+        }
+    
+    }
+    
+    
+    -----
+    
+     if(typeof input=="string")
+    {
+        if(input.length>=6)
+        {
+            tokens.forEach((e)=>
+            {
+                if( typeof e.tokenName=="string" && typeof e.tokenValue=="string" )
+                {
+                    var t= "${"+ e.tokenName + "}";
+                    input= input.replace(t, e.tokenValue);
+                }
+                else
+                {
+                    throw new Error("Invalid array format");
+                }
+            });
+            return input;
+            
+        }
+        else
+        {
+        throw new Error("Input should have at least 6 characters");
+        }
+    }
+    else
+    {
+        throw new Error("Input should be a string");
+    }
+  --------------
+  try{
+        //verificam daca parametrul pass este fals
+        //atunci returnam tot
+        if (!req.query.pass) {
+            let homeworks = await Homework.findAll()
+            res.status(200).json(homeworks)
+        }
+        //verificam daca parametrul pass este true
+        //atunci returnam doar ce e mai mare ca 5
+        if (req.query.pass === 'true') {
+            let homeworks = await Homework.findAll({
+                where: {
+                    grade: {
+                        [Sequelize.Op.gte]: 5
+                    }
+                }
+            })
+            res.status(200).json(homeworks)
+        }
+
+    }
+    catch(err){
+        console.warn(err.stack)
+        res.status(500).json({message : 'server error'})        
+    }
+    
+    -----
+    app.post('/device', async (req, res,next) => {
+    if(Object.keys(req.body).length === 0) {
+        res.status(400).json({message:"bad request"})
+    }
+    if(req.body.price<0){
+        res.status(400).json({message:"bad request"})
+    }
+    if(req.body.name.length<4){
+        res.status(400).json({message:"bad request"})
+    }
+    await Device.create(req.body)
+    res.status(201).json({message:"device created"})
+})
+
+
+app.delete('/device/:id', async (req, res) => {
+   await Device.destroy({
+    where:{
+        id:req.params.id
+    }
+   })
+})
+
+---
+if((req.body.constructor === Object && Object.keys(req.body).length === 0 )|| (req.body.price<0)) {
+        res.status(400).json({message: "bad request"})
+      }
+    if(req.body.name.length<4){
+        res.status(400).json({message: "bad request"})
+    }
+   
+    try {
+        await Device.create(req.body)
+        res.status(201).json({message: "device created"})
+    } catch (error) {
+        next(error)
+    }
+    
+    -----
+    if(!Array.isArray(first) || !Array.isArray(second)){
+		throw new Error("InvalidType");
+	}
+	const uniqueFirst=[...new Set(first)];
+	const uniqueSecond=[...new Set(second)];
+	let diff=0;
+	for(const [element,index] of uniqueFirst) //elementele distincte din primul array fata de cel de al doilea
+
+	{
+		if(uniqueSecond.indexOf(element)===-1){
+			diff++;
+		} else{
+			uniqueSecond.splice(index,1);//stergem elementul care se regaseste
+		}
+	}
+	diff+= uniqueSecond.length;
+	return diff;
+  ----
+   const page = parseInt(req.query.pageNo) 
+    const limit = parseInt(req.query.pageSize)
+    let mySHIPS = await Ship.findAll()
+  
+    if(!(parseInt(page)) && !(parseInt(limit))){
+        
+        res.status(200).json(mySHIPS)
+
+    }else if(parseInt(page) && parseInt(limit)){
+
+            //se afiseaza elementele de pe pagina 'page' cu cate 'limit' elemente pe response
+            const StartIndex = (page)*limit
+            const EndIndex = (page+1)*limit
+            let myResponse = mySHIPS.slice(StartIndex, EndIndex)
+            res.status(200).json(myResponse)
+
+    }else if(parseInt(page) && !(parseInt(limit))){
+        
+            //se da din 5 in 5 obiecte pe pagina
+            const StartIndex = page*5
+            const EndIndex = (page+1)*5
+            let myResponse = mySHIPS.slice(StartIndex, EndIndex)
+            res.status(200).json(myResponse)
+    }
+    
+    ---
+    if (typeof input !== "string" && input instanceof String === false) {
+    throw new Error("Input should be a string");
+  } else {
+    let ok = true;
+    for (let string of dictionary) {
+      if (typeof string != "string" && string instanceof String === false)
+        ok = false;
+    }
+    if (ok === false) {
+      throw new Error("Invalid dictionary format");
+    } else {
+      let items = input.split(" ").map((e) => e.toLowerCase());
+      let dictCopy = dictionary.map((e) => e.toLowerCase());
+
+      const result = {};
+      let total = 0;
+
+      for (const item of items) {
+        if (dictCopy.includes(item)) {
+          total++;
+        }
+      }
+      for (const item of items) {
+        if (dictCopy.includes(item)) {
+        } else {
+          result[`${item}`] = 1 / (items.length - total);
+        }
+      }
+      return result;
+    }
+  }
+  ---
+  try{
+		let ship = new Ship(req.body)
+		await ship.save()
+		res.status(201).json({message : 'created'})
+	}
+	catch(err){
+		res.status(500).json({message : 'server error'})		
+	}
